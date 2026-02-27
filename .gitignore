@@ -1,0 +1,44 @@
+```gitignore
+# Ignore everything at the root
+/*
+
+# Allow the .gitignore file itself
+!.gitignore
+
+# Allow only these specific directories
+!/pokedex/
+!/pokedex-front/
+
+# --- Classic Ignores (applied within allowed folders) ---
+
+# Dependencies
+**/node_modules/
+**/jspm_packages/
+
+# Build outputs
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/.nuxt/
+
+# Environment variables
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+
+# IDEs
+**/.vscode/
+**/.idea/
+```

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --c-white: #ffffff;
+  --c-background: #fff0e5;
+  --c-text-primary: #1e1e1e;
+  --c-text-secondary: #757575;
+  --c-border: #e0e0e0;
+  --c-border-light: #f0f0f0;
+  /* Couleur des types (avec alias en français pour la BDD) */
+  --type-fire: #ff9d55;
+  --type-feu: var(--type-fire);
+  
+  --type-water: #559ed0;
+  --type-eau: var(--type-water);
+  
+  --type-grass: #5dba7d;
+  --type-plante: var(--type-grass);
+  
+  --type-electric: #f3d23b;
+  --type-electrik: var(--type-electric);
+  
+  --type-ice: #7addd1;
+  --type-glace: var(--type-ice);
+  
+  --type-fighting: #ce4069;
+  --type-combat: var(--type-fighting);
+  
+  --type-poison: #ab6ac8;
+  
+  --type-ground: #d97845;
+  --type-sol: var(--type-ground);
+  
+  --type-flying: #8faadd;
+  --type-vol: var(--type-flying);
+  
+  --type-psychic: #f97177;
+  --type-psy: var(--type-psychic);
+  
+  --type-bug: #91c12f;
+  --type-insecte: var(--type-bug);
+  
+  --type-rock: #c5b78c;
+  --type-roche: var(--type-rock);
+  
+  --type-ghost: #5269ad;
+  --type-spectre: var(--type-ghost);
+  
+  --type-dragon: #0a6dc3;
+  
+  --type-dark: #5a5366;
+  --type-tenebres: var(--type-dark);
+  
+  --type-steel: #5a8ea2;
+  --type-acier: var(--type-steel);
+  
+  --type-fairy: #ec8fe6;
+  --type-fee: var(--type-fairy);
+  
+  --type-normal: #919aa2;
+
+  /* Ombre des cartes et boutons */
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  --btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--c-text-primary);
+  background: linear-gradient(135deg, #6dd5ed 0%, #2193b0 100%);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* relative for the before pseudo element */
+}
+
+/* Subtly animated Pokeball pattern background applied globally */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23ffffff' stroke-width='3' fill='none' opacity='0.15'%3E%3Ccircle cx='40' cy='40' r='18' /%3E%3Cpath d='M22 40 h36' /%3E%3Ccircle cx='40' cy='40' r='6' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  animation: movePattern 20s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes movePattern {
+  0% { background-position: 0 0; }
+  100% { background-position: 80px 80px; }
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
