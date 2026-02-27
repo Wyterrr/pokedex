@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">94.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>17/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">94.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>17/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -109,8 +109,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -126,22 +126,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,10 +149,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const mongoose = require('mongoose');
 &nbsp;
-let validateEmail = <span class="fstat-no" title="function not covered" >fu</span>nction(email) {
+let validateEmail = function(email) {
     // expression régulière
-    let re = <span class="cstat-no" title="statement not covered" >/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;</span>
-<span class="cstat-no" title="statement not covered" >    return re.test(email);</span>
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return re.test(email);
 };
 &nbsp;
 const userSchema = new mongoose.Schema({
@@ -167,23 +167,23 @@ const userSchema = new mongoose.Schema({
 &nbsp;
 &nbsp;
 // Middleware pour formater les noms avant la sauvegarde
-userSchema.pre('save', <span class="fstat-no" title="function not covered" >as</span>ync function() {
-<span class="cstat-no" title="statement not covered" >    if (this.firstName) {</span>
-<span class="cstat-no" title="statement not covered" >        this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();</span>
+userSchema.pre('save', async function() {
+    if (this.firstName) {
+        this.firstName = this.firstName.charAt(0).toUpperCase() + this.firstName.slice(1).toLowerCase();
     }
-<span class="cstat-no" title="statement not covered" >    if (this.lastName) {</span>
-<span class="cstat-no" title="statement not covered" >        this.lastName = this.lastName.toUpperCase();</span>
+    if (this.lastName) {
+        this.lastName = this.lastName.toUpperCase();
     }
 });
 &nbsp;
 // Middleware pour formater les noms lors des mises à jour
-userSchema.pre('findOneAndUpdate', <span class="fstat-no" title="function not covered" >as</span>ync function() {
-    const update = <span class="cstat-no" title="statement not covered" >this.getUpdate();</span>
+userSchema.pre('findOneAndUpdate', async function() {
+    const update = this.getUpdate();
     
-<span class="cstat-no" title="statement not covered" >    if (update.firstName) {</span>
-<span class="cstat-no" title="statement not covered" >        update.firstName = update.firstName.charAt(0).toUpperCase() + update.firstName.slice(1).toLowerCase();</span>
+    if (update.firstName) {
+        update.firstName = update.firstName.charAt(0).toUpperCase() + update.firstName.slice(1).toLowerCase();
     }
-<span class="cstat-no" title="statement not covered" >    if (update.lastName) {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (update.lastName) {
 <span class="cstat-no" title="statement not covered" >        update.lastName = update.lastName.toUpperCase();</span>
     }
 });
@@ -196,7 +196,7 @@ module.exports = userModel;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-24T10:34:11.530Z
+                at 2026-02-27T14:14:13.716Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

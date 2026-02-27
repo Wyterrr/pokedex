@@ -54,7 +54,8 @@ const getAllPokemons = async (req, res) => {
         const pokemons = await pkmnService.getAllPokemons();
         res.status(200).json({
             data: pokemons,
-            count: pokemons.length
+            count: pokemons.length,
+            success: true
         });
     } catch (error) {
         res.status(500).json({
@@ -99,7 +100,7 @@ const deletePokemon = async (req, res) => {
             });
         }
 
-        res.status(204).send();
+        res.status(200).json({ message: 'Pokemon deleted successfully' });
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -173,17 +174,18 @@ const addRegionToPokemon = async (req, res) => {
 
 const removeRegionFromPokemon = async (req, res) => {
     try {
-        const { pkmnID, regionName } = req.query;
+        const pkmnId = req.query.pkmnId || req.body.pkmnId || req.query.pkmnID || req.body.pkmnID;
+        const regionName = req.query.regionName || req.body.regionName;
 
         // Validation des données
-        if (!pkmnID || !regionName) {
+        if (!pkmnId || !regionName) {
             return res.status(400).json({
                 success: false,
-                message: 'Les paramètres pkmnID et regionName sont requis.'
+                message: 'Les paramètres pkmnId et regionName sont requis.'
             });
         }
 
-        const pokemon = await pkmnService.removeRegionFromPokemon(pkmnID, regionName);
+        const pokemon = await pkmnService.removeRegionFromPokemon(pkmnId, regionName);
         if (!pokemon) {
             return res.status(404).json({
                 success: false,
@@ -191,7 +193,7 @@ const removeRegionFromPokemon = async (req, res) => {
             });
         }
 
-        res.status(204).send();
+        res.status(200).json({ message: 'Région supprimée avec succès' });
     } catch (error) {
         res.status(500).json({
             success: false,

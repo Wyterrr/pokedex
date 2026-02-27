@@ -9,7 +9,7 @@ router.get('/pkmn', pkmnController.getAllPokemons);
 router.get('/pkmn/types', pkmnController.getTypes);
 
 router.get("/test-admin", authM, authM.isAdmin, (req, res) => {
-  return res.status(200).send("OK");
+  return res.status(200).json({ message: "OK" });
 });
 
 // Route pour créer un Pokémon
@@ -19,7 +19,7 @@ router.delete('/pkmn', authM, authM.isAdmin, pkmnController.deletePokemon);
 // Route pour modifier un Pokémon (Admin)
 router.put('/pkmn', authM, authM.isAdmin, pkmnController.updatePokemon);
 // Route pour ajouter une région à un Pokémon
-router.post('/pkmn/region', authM, pkmnController.addRegionToPokemon);
+router.post('/pkmn/region', authM, authM.isAdmin, pkmnController.addRegionToPokemon);
 // Route pour supprimer une région d'un Pokémon (Admin)
 router.delete('/pkmn/region', authM, authM.isAdmin, pkmnController.removeRegionFromPokemon);
 
