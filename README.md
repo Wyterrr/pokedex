@@ -19,7 +19,14 @@ Pour installer les dépendances de tous les sous-projets (Back, Front, Tests E2E
 make install
 ```
 
-### 3. Lancer l'environnement de développement
+### 3. Peupler la base de données (Seed)
+Pour télécharger les données depuis PokéAPI et créer l'utilisateur de test (`Wyte` / `test1234`), lancez :
+```bash
+make seed
+```
+*(Cette commande va automatiquement démarrer la base MongoDB si elle ne l'est pas).*
+
+### 4. Lancer l'environnement de développement
 Pour tout démarrer (la base de données via Docker, le Backend sur le port 3000, et le Frontend) en un seul terminal :
 ```bash
 make dev

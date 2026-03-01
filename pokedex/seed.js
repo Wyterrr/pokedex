@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const axios = require('axios');
+const bcrypt = require('bcrypt');
 const Pokemon = require('./src/models/pokemon.model');
+const User = require('./src/models/users.model');
 
 // URI pour la connexion avec mongoDB
 const MONGO_URI = 'mongodb://admin:admin123@localhost:27017';
@@ -58,6 +60,20 @@ async function seedDatabase() {
         console.log('Wiping existing Pokemon collection...');
         await Pokemon.deleteMany({});
         console.log('Collection cleared.');
+
+        console.log('Wiping existing User collection...');
+        await User.deleteMany({});
+        console.log('User collection cleared.');
+
+        console.log('Creating default user: Wyte...');
+        const hashedPassword = await bcrypt.hash('test1234', 10);
+        await User.create({
+            username: 'Wyte',
+            email: 'wyte@test.com',
+            password: hashedPassword,
+            role: 'admin'
+        });
+        console.log('Default user created.');
 
         console.log('Fetching first 151 Pokemon from PokeAPI...');
         // On utilise l'api pokeapi pour récupérer les données des pokemons

@@ -1,6 +1,6 @@
 PORT ?= 5174
 
-.PHONY: install up dev down test test-api test-e2e clean
+.PHONY: install up dev down test test-api test-e2e clean seed
 
 install:
 	@echo "Installation des dépendances du Backend..."
@@ -13,6 +13,10 @@ install:
 up:
 	@echo "Démarrage de MongoDB..."
 	docker compose up -d
+
+seed: up
+	@echo "Peuplement de la base de données (Pokemon + Utilisateur Wyte)..."
+	cd pokedex && node seed.js
 
 down:
 	@echo "Arrêt de MongoDB..."
