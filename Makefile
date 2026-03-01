@@ -4,7 +4,7 @@ PORT ?= 5174
 
 install:
 	@echo "Installation des dépendances du Backend..."
-	cd pokedex && npm install
+	cd pokedex && npm install && npm install axios
 	@echo "Installation des dépendances du Frontend..."
 	cd pokedex-front && npm install
 	@echo "Installation des dépendances pour les tests E2E..."
