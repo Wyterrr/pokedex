@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Rechercher un Pokémon affiche le bon résultat', async ({ page }) => {
   // 1. Ouvrir l'application
-  await page.goto('http://localhost:5174/');
+  await page.goto('/');
 
   // 2. Si non connecté, se connecter d'abord
   if (page.url().includes('/login')) {
@@ -11,7 +11,7 @@ test('Rechercher un Pokémon affiche le bon résultat', async ({ page }) => {
     await page.fill('input[type="text"]', 'Wyte'); // Remplace par un vrai identifiant
     await page.fill('input[type="password"]', 'test1234'); // Remplace par un vrai mdp
     await page.click('button[type="submit"]');
-    await page.waitForURL('http://localhost:5174/');
+    await page.waitForURL('**/');
   }
 
   // 3. Localiser la barre de recherche (le placeholder exact dans ton code)

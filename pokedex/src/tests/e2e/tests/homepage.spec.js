@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 
 test('La page d\'accueil s\'affiche correctement', async ({ page }) => {
-  // 1. Accéder à l'application Vue (ex: sur le port 5174 de Vite)
-  await page.goto('http://localhost:5174/');
+  // 1. Accéder à l'application Vue (port dynamique via process.env.PORT ou 5174 par défaut)
+  await page.goto('/');
 
   // 2. L'application redirige vers /login pour les visiteurs non authentifiés
   // On s'attend donc à être sur la page de connexion

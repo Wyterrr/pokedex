@@ -8,6 +8,7 @@
 # Allow only these specific directories
 !/pokedex/
 !/pokedex-front/
+!/Makefile
 
 # --- Classic Ignores (applied within allowed folders) ---
 
