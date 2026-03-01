@@ -6,6 +6,15 @@ export const trainerService = {
       const response = await api.get('/trainer');
       return response.data.data;
     } catch (error) {
+      if (error.response && error.response.status === 404) {
+        // Le dresseur n'existe pas encore, on le crée automatiquement
+        console.log("Création automatique du profil dresseur...");
+        const newTrainerResponse = await api.post('/trainer', {
+            trainerName: 'Nouveau Dresseur',
+            imgUrl: ''
+        });
+        return newTrainerResponse.data.data;
+      }
       console.error('Erreur lors de la récupération du profil dresseur:', error);
       throw error;
     }
