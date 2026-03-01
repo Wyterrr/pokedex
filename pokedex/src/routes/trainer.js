@@ -13,3 +13,4 @@ router.delete('/', trainerController.deleteTrainer);
 router.post('/mark', trainerController.markPokemon);
 
 module.exports = router;
+ 

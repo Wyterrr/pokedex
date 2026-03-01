@@ -81,7 +81,14 @@ async function seedDatabase() {
         const results = response.data.results;
         
         console.log(`Formatage et téléchargement profond de ${results.length} Pokemon...`);
-        const pokemonPromises = results.map(async (poke) => {
+        const pokemonList = [];
+        const chunkSize = 50; // Nombre de requêtes concurrentes max
+
+        for (let i = 0; i < results.length; i += chunkSize) {
+            const chunk = results.slice(i, i + chunkSize);
+            console.log(`Traitement du lot ${i} à ${Math.min(i + chunkSize, results.length)} / ${results.length}...`);
+            
+            const chunkPromises = chunk.map(async (poke) => {
             // On récupère les données des pokemon (taille, poids, etc.)
             const details = await axios.get(poke.url);
             const data = details.data;
@@ -165,10 +172,14 @@ async function seedDatabase() {
                 },
                 evolutions: evoChain
             };
-        });
+            });
 
-        // On attend que toutes les données soient récupérées
-        const pokemonList = await Promise.all(pokemonPromises);
+            const chunkResults = await Promise.all(chunkPromises);
+            pokemonList.push(...chunkResults);
+            
+            // Pause d'une seconde pour éviter l'erreur ECONNRESET via PokeAPI
+            await new Promise(r => setTimeout(r, 1000));
+        }
         
         console.log('Inserting heavy records into MongoDB...');
         await Pokemon.insertMany(pokemonList);
