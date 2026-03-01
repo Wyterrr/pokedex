@@ -9,6 +9,7 @@
 !/pokedex/
 !/pokedex-front/
 !/Makefile
+!/compose.yaml
 
 # --- Classic Ignores (applied within allowed folders) ---
 
